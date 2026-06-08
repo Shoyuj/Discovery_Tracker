@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: postgres_discovery  # just a name for the container
+    image: postgres                      # which Docker image to use (official postgres)
+    environment:
+      POSTGRES_USER: root               # database username
+      POSTGRES_PASSWORD: password       # database password
+      PGDATA: /data/postgres            # where postgres stores its data inside the container
+    volumes:
+      - db:/data/postgres               # saves data so it doesn't disappear when container stops
+    ports:
+      - "5334:5432"                     # your mac port : container port
+    restart: unless-stopped             # restart automatically if it crashes
+
+networks:
+  db:
+    driver: bridge                      # standard network type, just always write this
+
+volumes:
+  db:                                   # declares the volume used above
