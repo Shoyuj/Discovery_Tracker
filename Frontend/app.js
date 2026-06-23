@@ -9,7 +9,7 @@ function addArtist() {
     const artistName = document.getElementById("artistInput").value;
     if (!artistName) return;
 
-    fetch("http://localhost:8080/api/v1/artists/" + artistName, {
+    fetch("https://discoverytracker-production.up.railway.app/api/v1/artists/" + artistName, {
         method: "POST"
     })
     .then(response => response.json())
@@ -35,7 +35,7 @@ function displayArtist(data) {
 }
 
 function fetchSongs(n) {
-    fetch("http://localhost:8080/api/v1/artists/" + n + "/songs", {
+    fetch("https://discoverytracker-production.up.railway.app/api/v1/artists/" + n + "/songs", {
         method: "POST"
     })
     .then(response => response.json())
@@ -47,7 +47,7 @@ function fetchSongs(n) {
 }
 
 function getStats(artistId) {
-    fetch("http://localhost:8080/api/v1/artists/" + artistId + "/stats")
+    fetch("https://discoverytracker-production.up.railway.app/api/v1/artists/" + artistId + "/stats")
     .then(response => response.json())
     .then(data => {
         const stats = document.getElementById("stats-" + artistId);
@@ -56,7 +56,7 @@ function getStats(artistId) {
 }
 
 function getSongs(artistId) {
-    fetch("http://localhost:8080/api/v1/songs/" + artistId)
+    fetch("https://discoverytracker-production.up.railway.app/api/v1/songs/" + artistId)
     .then(response => response.json())
     .then(songs => {
         if (songs.length > 0) {
@@ -78,7 +78,7 @@ function getSongs(artistId) {
 
 function updateStatus(songId, isChecked, artistId) {
     const status = isChecked ? "LISTENED" : "UNHEARD";
-    fetch("http://localhost:8080/api/v1/songs/" + songId + "/status", {
+    fetch("https://discoverytracker-production.up.railway.app/api/v1/songs/" + songId + "/status", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: status })
@@ -87,7 +87,7 @@ function updateStatus(songId, isChecked, artistId) {
 }
 
 function loadArtists() {
-    fetch("http://localhost:8080/api/v1/artists")
+    fetch("https://discoverytracker-production.up.railway.app/api/v1/artists")
     .then(response => response.json())
     .then(artists => {
         artists.forEach(artist => {
