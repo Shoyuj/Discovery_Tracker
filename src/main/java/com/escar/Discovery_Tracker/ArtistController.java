@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1")
 public class ArtistController {
@@ -41,5 +42,10 @@ public class ArtistController {
                 "listened", listened,
                 "percentage", percentage
         );
+    }
+
+    @GetMapping("/artists")
+    public List<Artist> getAllArtists() {
+        return artistRepository.findAll();
     }
 }
