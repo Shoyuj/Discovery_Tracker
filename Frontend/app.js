@@ -56,9 +56,11 @@ function getStats(artistId) {
 }
 
 function getSongs(artistId) {
+    if (!artistId) return;
     fetch("https://discoverytracker-production.up.railway.app/api/v1/songs/" + artistId)
     .then(response => response.json())
     .then(songs => {
+        if (!Array.isArray(songs)) return;
         if (songs.length > 0) {
             document.querySelector("#artist-" + artistId + " button").style.display = "none";
         }
@@ -91,9 +93,11 @@ function loadArtists() {
     .then(response => response.json())
     .then(artists => {
         artists.forEach(artist => {
-            displayArtist(artist);
-            getStats(artist.id);
-            getSongs(artist.id);
+            if (artist.id) {
+                displayArtist(artist);
+                getStats(artist.id);
+                getSongs(artist.id);
+            }
         });
     });
 }
