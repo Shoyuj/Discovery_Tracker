@@ -38,5 +38,12 @@ Ever wonder how much of Kanye's catalog you've listened to? Discovery Tracker le
 
 When you search an artist, the backend authenticates with Spotify using Client Credentials Flow, fetches the artist's albums, then pulls every track from each album and stores them in PostgreSQL. You can then mark songs as listened and see your completion percentage update in real time.
 
+## Live Demo
+[discovery-tracker.netlify.app](https://discovery-tracker.netlify.app)
+
 ## Screenshots
+
+<img width="1600" height="830" alt="WhatsApp Image 2026-06-23 at 10 50 44 AM" src="https://github.com/user-attachments/assets/0035bf20-6610-451a-8055-0ad32892668e" />
+
+
 
